@@ -117,6 +117,6 @@ dump(model,'sales_model.joblib')
 
 Load a model
 from joblib import load
-loaded_model.predict([[200000])
+loaded_model.predict([[200000]])
 
 
