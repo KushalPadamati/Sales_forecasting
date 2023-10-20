@@ -103,7 +103,20 @@ plt.ylabel('residuals')
 plt.show()
 4.Variable Significance
 import statsmodels.formula.api as smf
+model2=smf.ols('y~X',data=df).fit()
+model2.summary()
 
+Step6:Final Inferences
+Our next campaign will have a total spend of 200k on Ads, how many units could we expect to sell as a results of this?
+# use the model to make predictions on a new value
+model.predict([[321499]])
 
+Save a Model
+from joblib import dump
+dump(model,'sales_model.joblib')
+
+Load a model
+from joblib import load
+loaded_model.predict([[200000])
 
 
