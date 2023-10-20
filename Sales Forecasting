@@ -1,5 +1,47 @@
+## Step1: Business Problem Understanding
+# Identifying the relation between sales and advertisements
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+## Step2: Data Understanding
+# 2.1 Data Collection
+df=pd.read_csv("Advertising.csv")
+df.head()
+
+df.info()
+
+#If someone was to spend a total of $200,000, what would the expected sales be?
+# we have simplified this quite a bit by combining all the features into "total spend"
+df['total_spend']=df['TV']+df['radio']+df['newspaper']
+df.head()
+
+## Step3: Data Preprocessing
+#3.1 EDA
+#On the basis of this data, how should you spend advertising money in the future?
+1. Is there a relationship between ads and sales?
+2. How strong is that relationship
+3. Given Add's spending, can sales be predicted?
+
+df.describe()
+
+sns.pairplot(df)
+plt.show()
+
+df.corr()
+
+#3.2 Data Cleaning
+df.isnull().sum()
+
+#3.3 Data Wangling
+ #no encoding requied
+
+#3.4 Train-Test Split
+X= df.drop(columns='sales')
+y= df['sales']
+
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=42)
+
+Step4: Modelling
