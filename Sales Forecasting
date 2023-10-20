@@ -76,4 +76,34 @@ model.score(X_test,y_test) # Test R-Square
 model.score(X_train,y_train) # Train R-Square
 
 #Checklist
+1. is model has underfitting or over fitting problem?
+Ans: Its a good model.
+2. Is Test Accuracy=Cross validation Score?
+from sklearn.model_selection import cross_val_score
+scores=cross_val_score(model,X,y,cv=5)
+print(scores)
+cv_score = scores.mean()
+print('Cross Validation Score:',cv_score)
+
+# Check for Assumptions
+1. Linearity of Errors
+test_res=y_test-test_predictions
+plt.scatter(y test,test res)
+plt.xlabel('observed_values')
+plt.ylabel('fitted_values')
+plt.show()
+2.Normality of Errors
+sns.displot(test_res,kde=True)
+plt.show()
+3. Equal variance of Erros(Homoscadesicity)
+plt.scatter(test_predictions,test_res,c='r')
+plt.axhline(y=0,color='blue')
+plt.xlabel('fitted_values')
+plt.ylabel('residuals')
+plt.show()
+4.Variable Significance
+import statsmodels.formula.api as smf
+
+
+
 
